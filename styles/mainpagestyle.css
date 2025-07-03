@@ -84,7 +84,7 @@ body {
 .card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 48%));
-  gap: clamp(12px, 1.5vw, 20px); /* Отступ от 12px до 20px в зависимости от ширины экрана */
+  gap: clamp(12px, 1.5vw, 50px);
   width: 69.08%;
   margin: 0 auto;
   justify-content: center;

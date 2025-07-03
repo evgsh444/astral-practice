@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html>
+<sc>
 <head>
     <meta charset="UTF-8" />
     <title>title</title>
+    <link rel="stylesheet" href="styles/scenariopagestyle.css">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/logo.svg">
 </head>
 <body>
     <div id="scenario-wrapper">
-        <img id="step-img" src="" alt="stepimg" />
-        <div id="hotspot-container"></div>
-        <div id="tooltip-container">
-            <button id="next-btn">Далее</button>
-            <button id="prev-btn">Назад</button>
+        <div class="background-container">
+                <div class="image-wrapper"> 
+                    <img id="step-img" src="" alt="stepimg" />
+                    <div class="hotspot-container"></div>
+                </div>
         </div>
-    </div>
+     </div>
 </body>
 
 <script src="js/main.js"></script>
+<script src="js/hotspotsrender.js"></script>
+<script src="js/editor.js"></script>
 <script>
     scenarioHandler();
+    setScenarioTitle();
 </script>
 </html>
