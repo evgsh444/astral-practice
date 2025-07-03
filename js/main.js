@@ -136,9 +136,9 @@ function nextStep() {
     currentHotspotIndex = 0;
     displayCurrentStep();
   }
-  if(currentStep === currentScenario.totalSteps) {
-    localStorage.removeItem('hotspot-step');
-    window.location.href = "index.html";
+  if (currentStep === currentScenario.totalSteps && currentHotspotIndex === currentScenario.steps[currentStep - 1].hotspots.length - 1) {
+      localStorage.removeItem('hotspot-step');
+      window.location.href = "index.html";
   }
 }
 
