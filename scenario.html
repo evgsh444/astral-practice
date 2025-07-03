@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html>
+<sc>
 <head>
     <meta charset="UTF-8" />
     <title>title</title>
+    <link rel="stylesheet" href="styles/scenariopagestyle.css">
 </head>
 <body>
     <div id="scenario-wrapper">
-        <img id="step-img" src="" alt="stepimg" />
-        <div id="hotspot-container"></div>
-        <div id="tooltip-container">
-            <button onclick="prevStep()">Назад</button>
-            <button onclick="nextStep()">Далее</button>
+        <div class="background-container">
+                <div class="image-wrapper"> 
+                    <img id="step-img" src="" alt="stepimg" />
+                    <div class="hotspot-container"></div>
+                </div>
         </div>
-    </div>
+     </div>
 </body>
 
 <script src="js/main.js"></script>
+<script src="js/hotspotsrender.js"></script>
+<script src="js/editor.js"></script>
 <script>
     scenarioHandler();
 </script>

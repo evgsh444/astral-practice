@@ -37,38 +37,80 @@ async function scenarioHandler() {
   displayCurrentStep();
 }
 
+
+
+let currentHotspotIndex = 0;
+
 function displayCurrentStep() {
   const stepData = currentScenario.steps.find(step => step.step === currentStep);
-  if (!stepData) {
-    console.warn(`Шаг ${currentStep} не найден`);
-    return;
+  if (!stepData) return;
+
+  if (displayCurrentStep._lastStep !== currentStep) {
+    if (!displayCurrentStep._fromPrevStep) {
+      currentHotspotIndex = 0;
+    }
+    displayCurrentStep._lastStep = currentStep;
+    displayCurrentStep._fromPrevStep = false;
   }
 
-  const stepImgContainer = document.getElementById("step-img");
-  const stepCounter = document.getElementById("step-counter");
-
-  if (stepImgContainer && stepData.image) {
-    stepImgContainer.src = stepData.image;
-  }
-
-  if (stepCounter) {
-    stepCounter.textContent = `${currentStep} из ${currentScenario.totalSteps}`;
-  }
-
-  console.log("Отображён шаг:", currentStep);
+  const hotspotContainer = document.querySelector(".hotspot-container");
+  const stepImg = document.getElementById("step-img");
+  if (!stepImg) return;
+  stepImg.onclick = null;
+  stepImg.onclick = function(e) {
+    const rect = this.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    console.log(`xPercent: ${x.toFixed(1)}, yPercent: ${y.toFixed(1)}`);
+  };
+  stepImg.src = stepData.image;
+  stepImg.onload = () => {
+    stepImg.ondragstart = () => false;
+    if (window.enableHotspotEditor) window.enableHotspotEditor();
+    hotspotContainer.innerHTML = "";
+    // Если есть хотспоты, показываем только один по индексу
+    if (stepData.hotspots && stepData.hotspots.length > 0) {
+      addHotspot(stepData.hotspots[currentHotspotIndex]);
+    }
+  };
 }
+
 
 
 function nextStep() {
+  const stepData = currentScenario.steps.find(step => step.step === currentStep);
+  if (stepData && stepData.hotspots && stepData.hotspots.length > 1 && currentHotspotIndex < stepData.hotspots.length - 1) {
+    currentHotspotIndex++;
+    displayCurrentStep();
+    return;
+  }
   if (currentStep < currentScenario.totalSteps) {
     currentStep++;
+    currentHotspotIndex = 0;
     displayCurrentStep();
   }
 }
 
+
 function prevStep() {
+  const stepData = currentScenario.steps.find(step => step.step === currentStep);
+  if (stepData && stepData.hotspots && stepData.hotspots.length > 1 && currentHotspotIndex > 0) {
+    currentHotspotIndex--;
+    displayCurrentStep();
+    return;
+  }
   if (currentStep > 1) {
     currentStep--;
+    const prevStepData = currentScenario.steps.find(step => step.step === currentStep);
+    if (prevStepData && prevStepData.hotspots && prevStepData.hotspots.length > 0) {
+      currentHotspotIndex = prevStepData.hotspots.length - 1;
+    } else {
+      currentHotspotIndex = 0;
+    }
+    displayCurrentStep._fromPrevStep = true;
     displayCurrentStep();
   }
 }
+
+
+

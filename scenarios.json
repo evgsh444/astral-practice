@@ -8,26 +8,150 @@
         "image": "assets/scenario1imgs/addorganizationimg.svg",
         "hotspots": [
           {
-            "coords": [80, 4, 95, 7],
-            "view": ""
+            "xPercent": 65,
+            "yPercent": 1,
+            "width": 16,
+            "height": 5,
+            "tooltipPosition": "bottom",
+            "tooltipAlign": "center",
+            "tooltipTitle": "Добавление организации",
+            "tooltipText": "На верхней панели нажмите кнопку “Добавить организацию”"
           }
-        ],
-        "buttons": {
-          "next": true,
-          "back": false
-        }
+        ]
       },
-
       {
         "step": 2,
         "image": "assets/scenario1imgs/allorganizationsimg.svg",
-        "hotspots": [ {} ],
-        "buttons": {
-          "next": true,
-          "back": true
-        }
+        "hotspots": [
+          {
+            "xPercent": 68.2,
+            "yPercent": 0.8,
+            "width": 13.4,
+            "height": 5.6,
+            "tooltipPosition": "bottom",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "Если у вас уже есть добавленные организации, то кнопка на верхней панели будет называться “Все организации”"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "image": "assets/scenario1imgs/allorganizationscontrolpanelimg.svg",
+        "hotspots": [
+          {
+            "xPercent": 50.8,
+            "yPercent": 30.9,
+            "width": 30.6,
+            "height": 8.1,
+            "tooltipPosition": "bottom",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "В выпадающем списке выберите “Добавить организацию”"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "image": "assets/scenario1imgs/adminpanelimg.svg",
+        "hotspots": [
+          {
+            "xPercent": 88.3,
+            "yPercent": 10.3,
+            "width": 10.8,
+            "height": 5.3,
+            "tooltipPosition": "left",
+            "tooltipAlign": "top",
+            "tooltipTitle": "",
+            "tooltipText": "Затем нажмите кнопку “Добавить”"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "image": "assets/scenario1imgs/writeinnimg.svg",
+        "hotspots": [
+          {
+            "xPercent": 28.2,
+            "yPercent": 36.8,
+            "width": 17.0,
+            "height": 13.7,
+            "tooltipPosition": "bottom",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "Для добавления организации по ИНН в соответствующем поле введите идентификационный номер налогоплательщика"
+          },
+          {
+            "xPercent": 52.7,
+            "yPercent": 17.8,
+            "width": 27.1,
+            "height": 10.2,
+            "tooltipPosition": "bottom",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "При выборе варианта “По сертификату” отобразится список установленных в системе электронных подписей"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "image": "assets/scenario1imgs/connectastralimg.svg",
+        "hotspots": [
+          {
+            "xPercent": 21.6,
+            "yPercent": 18.7,
+            "width": 61.9,
+            "height": 10.3,
+            "tooltipPosition": "bottom",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "В верхнем блоке указана основная информация об организации"
+          },
+          {
+            "xPercent": 72.1,
+            "yPercent": 18.8,
+            "width": 10.8,
+            "height": 9.9,
+            "tooltipPosition": "bottom",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "Если вы хотите изменить данные организации, или сменить сертификат, нажмите “Изменить”.Если сертификат не был добавлен ранее, нажмите кнопку “Выбрать сертификат”."
+          },
+          {
+            "xPercent": 21.2,
+            "yPercent": 31.8,
+            "width": 61.9,
+            "height": 6.6,
+            "tooltipPosition": "bottom",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "Чтобы подключиться как уполномоченная бухгалтерия, активируйте соответствующий переключатель"
+          },
+          {
+            "xPercent": 20.5,
+            "yPercent": 42.3,
+            "width": 64.2,
+            "height": 35.7,
+            "tooltipPosition": "top",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "Ниже в блоке Тариф для сдачи отчетности выберите один из тарифов"
+          },
+          {
+            "xPercent": 62.6,
+            "yPercent": 40.8,
+            "width": 22.6,
+            "height": 8.3,
+            "tooltipPosition": "left",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "Если у вас есть промокод, введите его в соответствующее поле  "
+          }
+
+        ]
       }
     ]
   }
 ]
+
 
