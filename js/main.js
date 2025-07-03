@@ -138,7 +138,7 @@ function nextStep() {
   }
   if(currentStep === currentScenario.totalSteps) {
     localStorage.removeItem('hotspot-step');
-    window.location.href = "/";
+    window.location.href = "index.html";
   }
 }
 
