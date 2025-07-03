@@ -1,8 +1,22 @@
 let currentStep = 1;
 let currentScenario = null;
 
-async function loadScenarios() {
-  const response = await fetch('../scenarios.json');
+async function setScenarioTitle() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  if (!id) return;
+  try {
+    const scenarios = await loadScenarios();
+    const scenario = scenarios.find(s => String(s.id) === id);
+    if (scenario && scenario.name) {
+      document.title = scenario.name;
+    }
+  } catch(e) {}
+}
+setScenarioTitle();
+
+async function loadScenarios() {  
+  const response = await fetch('scenarios.json');
   if (!response.ok) throw new Error('Failed to load scenarios');
   const scenarios = await response.json();
   return scenarios; 

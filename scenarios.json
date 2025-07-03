@@ -185,9 +185,9 @@
           },
           {
             "xPercent": 40.5,
-            "yPercent": 91.6,
-            "width": 3.0,
-            "height": 4.2,
+            "yPercent": 91.4,
+            "width": 3.5,
+            "height": 4.5,
             "tooltipPosition": "top",
             "tooltipAlign": "center",
             "tooltipTitle": "",

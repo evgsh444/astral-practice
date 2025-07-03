@@ -1,4 +1,3 @@
-
 /* ====== Base & Layout ====== */
 * {
   box-sizing: border-box;
@@ -98,6 +97,8 @@ html, body {
   justify-content: right;
   gap: 15px;
 }
+
+/* ====== Tooltip Actions (Buttons) ====== */
 .tooltip-actions .prev,
 .tooltip-actions .next {
   display: flex;
@@ -246,7 +247,6 @@ html, body {
   .tooltip-actions .next {
     padding: 3px 8px;
   }
-}
 }
 
 
