@@ -24,7 +24,7 @@
     <main class="content">
       <div class="card-grid">
         <div class="card">
-          <button class="card-button" href="scenario.html">Подключение организаций</button>
+          <button class="card-button" data-id="addorganization">Подключение организаций</button>
         </div>
         <div class="card">
           <button class="card-button">Сценарий 2</button>
@@ -51,4 +51,15 @@
     </main>
   </div>
 </body>
+
+<script>
+  document.querySelectorAll('.card-button').forEach(button => {
+    button.addEventListener('click', function() {
+      const scenarioId = this.getAttribute('data-id');
+      if (scenarioId) {
+        window.location.href = 'scenario.html?id=' + scenarioId;
+      }
+    });
+  });
+</script>
 </html>

@@ -8,7 +8,8 @@
         "image": "assets/scenario1imgs/addorganizationimg.svg",
         "hotspots": [
           {
-            "coords": [80, 4, 95, 7]
+            "coords": [80, 4, 95, 7],
+            "view": ""
           }
         ],
         "buttons": {

@@ -1,11 +1,11 @@
 let currentStep = 1;
-let scenario = null;
+let currentScenario = null;
 
 async function loadScenarios() {
   const response = await fetch('../scenarios.json');
   if (!response.ok) throw new Error('Failed to load scenarios');
   const scenarios = await response.json();
-  return scenarios; // возвращаем массив сценариев
+  return scenarios; 
 }
 
 async function loadScenario() {
@@ -16,7 +16,7 @@ async function loadScenario() {
   try {
     const scenarios = await loadScenarios();
     const scenario = scenarios.find(s => String(s.id) === id);
-    return scenario || null; // возвращаем найденный сценарий или null
+    return scenario || null; 
   } catch (err) {
     console.error('Ошибка при загрузке сценария:', err);
     return null;
@@ -32,13 +32,43 @@ async function scenarioHandler() {
     scenarioContainer.textContent = "Сценарий не найден";
     return; 
   }
+  currentScenario = scenario;
+  currentScenario.totalSteps = currentScenario.steps.length;
+  displayCurrentStep();
+}
 
-  while(currentStep <= scenario.steps.length)
-  {
-    displayStep(currentStep);
+function displayCurrentStep() {
+  const stepData = currentScenario.steps.find(step => step.step === currentStep);
+  if (!stepData) {
+    console.warn(`Шаг ${currentStep} не найден`);
+    return;
+  }
+
+  const stepImgContainer = document.getElementById("step-img");
+  const stepCounter = document.getElementById("step-counter");
+
+  if (stepImgContainer && stepData.image) {
+    stepImgContainer.src = stepData.image;
+  }
+
+  if (stepCounter) {
+    stepCounter.textContent = `${currentStep} из ${currentScenario.totalSteps}`;
+  }
+
+  console.log("Отображён шаг:", currentStep);
+}
+
+
+function nextStep() {
+  if (currentStep < currentScenario.totalSteps) {
+    currentStep++;
+    displayCurrentStep();
   }
 }
 
-function displayStep(step){
-    
+function prevStep() {
+  if (currentStep > 1) {
+    currentStep--;
+    displayCurrentStep();
+  }
 }
