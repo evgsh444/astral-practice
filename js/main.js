@@ -34,6 +34,17 @@ async function scenarioHandler() {
   }
   currentScenario = scenario;
   currentScenario.totalSteps = currentScenario.steps.length;
+
+  const saved = localStorage.getItem('hotspot-step');
+  if (saved) {
+    try {
+      const obj = JSON.parse(saved);
+      if (obj && typeof obj.step === 'number' && typeof obj.hotspot === 'number') {
+        currentStep = obj.step;
+        currentHotspotIndex = obj.hotspot;
+      }
+    } catch(e) {}
+  }
   displayCurrentStep();
 }
 
@@ -42,10 +53,34 @@ async function scenarioHandler() {
 let currentHotspotIndex = 0;
 
 function displayCurrentStep() {
+  localStorage.setItem('hotspot-step', JSON.stringify({step: currentStep, hotspot: currentHotspotIndex}));
   const stepData = currentScenario.steps.find(step => step.step === currentStep);
   if (!stepData) return;
 
+  const hotspotContainer = document.querySelector(".hotspot-container");
+  const stepImg = document.getElementById("step-img");
+  if (!stepImg) return;
+  stepImg.onclick = null;
+
+  if (displayCurrentStep._lastStep === currentStep && displayCurrentStep._lastHotspotIndex !== undefined && displayCurrentStep._lastHotspotIndex !== currentHotspotIndex) {
+    const prevHotspot = stepData.hotspots[displayCurrentStep._lastHotspotIndex];
+    const newHotspot = stepData.hotspots[currentHotspotIndex];
+    const container = document.querySelector('.hotspot-container');
+    const prevDiv = container && container.firstElementChild;
+    if (prevDiv && prevDiv.animateTo) {
+      const tooltip = prevDiv.querySelector('.tooltip');
+      if (tooltip) tooltip.style.opacity = 0;
+      prevDiv.animateTo(newHotspot, () => {
+        displayCurrentStep._lastHotspotIndex = currentHotspotIndex;
+        hotspotContainer.innerHTML = "";
+        addHotspot(newHotspot);
+      });
+      return;
+    }
+  }
+
   if (displayCurrentStep._lastStep !== currentStep) {
+    displayCurrentStep._lastHotspotIndex = 0;
     if (!displayCurrentStep._fromPrevStep) {
       currentHotspotIndex = 0;
     }
@@ -53,25 +88,23 @@ function displayCurrentStep() {
     displayCurrentStep._fromPrevStep = false;
   }
 
-  const hotspotContainer = document.querySelector(".hotspot-container");
-  const stepImg = document.getElementById("step-img");
-  if (!stepImg) return;
-  stepImg.onclick = null;
-  stepImg.onclick = function(e) {
-    const rect = this.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    console.log(`xPercent: ${x.toFixed(1)}, yPercent: ${y.toFixed(1)}`);
-  };
+  // --- Анимация отображения шага ---
+  let displayType = (stepData.display && stepData.display[0]) || "fadeIn";
+  stepImg.className = displayType;
+  stepImg.style.opacity = "";
+  stepImg.style.transform = "";
   stepImg.src = stepData.image;
   stepImg.onload = () => {
     stepImg.ondragstart = () => false;
     if (window.enableHotspotEditor) window.enableHotspotEditor();
     hotspotContainer.innerHTML = "";
-    // Если есть хотспоты, показываем только один по индексу
     if (stepData.hotspots && stepData.hotspots.length > 0) {
       addHotspot(stepData.hotspots[currentHotspotIndex]);
     }
+    displayCurrentStep._lastHotspotIndex = currentHotspotIndex;
+    setTimeout(() => {
+      stepImg.classList.add("show");
+    }, 10);
   };
 }
 
@@ -88,6 +121,10 @@ function nextStep() {
     currentStep++;
     currentHotspotIndex = 0;
     displayCurrentStep();
+  }
+  if(currentStep === currentScenario.totalSteps) {
+    localStorage.removeItem('hotspot-step');
+    window.location.href = "/";
   }
 }
 

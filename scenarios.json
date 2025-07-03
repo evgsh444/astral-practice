@@ -86,7 +86,7 @@
             "yPercent": 17.8,
             "width": 27.1,
             "height": 10.2,
-            "tooltipPosition": "bottom",
+            "tooltipPosition": "top",
             "tooltipAlign": "center",
             "tooltipTitle": "",
             "tooltipText": "При выборе варианта “По сертификату” отобразится список установленных в системе электронных подписей"
@@ -147,11 +147,93 @@
             "tooltipTitle": "",
             "tooltipText": "Если у вас есть промокод, введите его в соответствующее поле  "
           }
-
+       ]
+      },
+      {
+        "step": 7,
+        "image": "assets/scenario1imgs/connecttoastral2img.svg",
+        "hotspots": [
+          {
+            "xPercent": 21.6,
+            "yPercent": 69.3,
+            "width": 62.5,
+            "height": 29.3,
+            "tooltipPosition": "top",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "На основании реквизитов организации система автоматически добавит в блоке Государственные органы необходимые направления”"
+          },
+          {
+            "xPercent": 65.8,
+            "yPercent": 70.9,
+            "width": 16.3,
+            "height": 5.9,
+            "tooltipPosition": "left",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "Вы можете добавить дополнительное направление"
+          },
+          {
+            "xPercent": 23.1,
+            "yPercent": 91.1,
+            "width": 12.2,
+            "height": 5.6,
+            "tooltipPosition": "top",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "Добавить дополнительные коды контролирующих органов (КПП, ОКПО, Рег. номер ПФР, ФСС и т.д.) в выбранное направление"
+          },
+          {
+            "xPercent": 40.5,
+            "yPercent": 91.6,
+            "width": 3.0,
+            "height": 4.2,
+            "tooltipPosition": "top",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "Удалить код в выбранном направлении"
+          },
+          {
+            "xPercent": 78.5,
+            "yPercent": 83.8,
+            "width": 4.3,
+            "height": 5.1,
+            "tooltipPosition": "top",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "И удалить направление"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "image": "assets/scenario1imgs/connectastralimg.svg",
+        "hotspots": [
+          {
+            "xPercent": 67.9,
+            "yPercent": 9.0,
+            "width": 18.7,
+            "height": 7.9,
+            "tooltipPosition": "bottom",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "После заполнения заявления сверьте итоговую стоимость в разделе “Итого”"
+          },
+          {
+            "xPercent": 86.0,
+            "yPercent": 8.8,
+            "width": 13.2,
+            "height": 8.7,
+            "tooltipPosition": "bottom",
+            "tooltipAlign": "end",
+            "tooltipTitle": "",
+            "tooltipText": "Eсли всё верно, нажмите “Отправить”"
+          }
         ]
       }
     ]
   }
 ]
+
 
 

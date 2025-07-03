@@ -8,6 +8,19 @@ function addHotspot(hs) {
     hotspotDiv.style.width = hs.width + "%";
     hotspotDiv.style.height = hs.height + "%";
 
+    // Для анимации перемещения хотспота
+    hotspotDiv.animateTo = function(newHs, cb) {
+        hotspotDiv.classList.add('hotspot-animating');
+        hotspotDiv.style.left = newHs.xPercent + "%";
+        hotspotDiv.style.top = newHs.yPercent + "%";
+        hotspotDiv.style.width = newHs.width + "%";
+        hotspotDiv.style.height = newHs.height + "%";
+        setTimeout(() => {
+            hotspotDiv.classList.remove('hotspot-animating');
+            if (cb) cb();
+        }, 350);
+    };
+
     
     const position = hs.tooltipPosition || 'top'; // top, bottom, left, right
     const align = hs.tooltipAlign || 'center'; // start, center, end
@@ -20,6 +33,29 @@ function addHotspot(hs) {
     tooltip.dataset.position = position;
     tooltip.dataset.align = align;
     tooltip.style.position = 'absolute';
+
+    // Для анимации тултипа
+    tooltip.animateTo = function(newHs, newPosition, newAlign, cb, newText, newTitle) {
+        tooltip.classList.add('tooltip-animating', 'tooltip-hide-arrow');
+        setTimeout(() => {
+            positionTooltip(newHs, newPosition, newAlign);
+            // Меняем текст и заголовок
+            if (typeof newText === 'string') {
+                const p = tooltip.querySelector('p');
+                if (p) p.textContent = newText;
+            }
+            if (typeof newTitle === 'string') {
+                const t = tooltip.querySelector('.tooltip-title');
+                if (t) t.textContent = newTitle;
+            }
+            // Меняем классы для стрелки
+            tooltip.className = `tooltip tooltip-${newPosition} tooltip-${newPosition}-${newAlign} tooltip-animating tooltip-hide-arrow`;
+            setTimeout(() => {
+                tooltip.classList.remove('tooltip-animating', 'tooltip-hide-arrow');
+                if (cb) cb();
+            }, 350);
+        }, 200);
+    };
     let arrowClass = '';
     if (position === 'top') {
         if (align === 'start') arrowClass = 'tooltip-arrow-bottom-left';
@@ -102,10 +138,14 @@ function addHotspot(hs) {
             </div>
         `;
     }
-    tooltip.innerHTML = tooltipContent;
 
+    tooltip.innerHTML = tooltipContent;
     hotspotDiv.appendChild(tooltip);
     tooltip.style.display = 'block';
+    // Плавное появление тултипа
+    setTimeout(() => {
+        tooltip.classList.add('tooltip-show');
+    }, 10);
 
     const prevBtn = tooltip.querySelector('.prev');
     const nextBtn = tooltip.querySelector('.next');
@@ -117,8 +157,8 @@ function addHotspot(hs) {
     }
 
 
-    // Функция для позиционирования tooltip
-    function positionTooltip() {
+    // Функция для позиционирования tooltip (может принимать новые параметры)
+    function positionTooltip(hsArg = hs, positionArg = position, alignArg = align) {
         tooltip.style.left = '';
         tooltip.style.top = '';
         tooltip.style.width = '';
@@ -128,10 +168,10 @@ function addHotspot(hs) {
             const hsRect = hotspotDiv.getBoundingClientRect();
             let left = 0, top = 0;
             // TOP
-            if (position === 'top') {
-                if (align === 'start') {
+            if (positionArg === 'top') {
+                if (alignArg === 'start') {
                     left = 0;
-                } else if (align === 'end') {
+                } else if (alignArg === 'end') {
                     left = hsRect.width - ttRect.width;
                 } else {
                     left = (hsRect.width - ttRect.width) / 2;
@@ -139,10 +179,10 @@ function addHotspot(hs) {
                 top = -ttRect.height - 8;
             }
             // BOTTOM
-            else if (position === 'bottom') {
-                if (align === 'start') {
+            else if (positionArg === 'bottom') {
+                if (alignArg === 'start') {
                     left = 0;
-                } else if (align === 'end') {
+                } else if (alignArg === 'end') {
                     left = hsRect.width - ttRect.width;
                 } else {
                     left = (hsRect.width - ttRect.width) / 2;
@@ -150,22 +190,22 @@ function addHotspot(hs) {
                 top = hsRect.height + 8;
             }
             // LEFT
-            else if (position === 'left') {
+            else if (positionArg === 'left') {
                 left = -ttRect.width - 8;
-                if (align === 'start') {
+                if (alignArg === 'start') {
                     top = 0;
-                } else if (align === 'end') {
+                } else if (alignArg === 'end') {
                     top = hsRect.height - ttRect.height;
                 } else {
                     top = (hsRect.height - ttRect.height) / 2;
                 }
             }
             // RIGHT
-            else if (position === 'right') {
+            else if (positionArg === 'right') {
                 left = hsRect.width + 8;
-                if (align === 'start') {
+                if (alignArg === 'start') {
                     top = 0;
-                } else if (align === 'end') {
+                } else if (alignArg === 'end') {
                     top = hsRect.height - ttRect.height;
                 } else {
                     top = (hsRect.height - ttRect.height) / 2;

@@ -56,7 +56,18 @@ function enableHotspotEditor() {
       const widthPercent = (w / rect.width) * 100;
       const heightPercent = (h / rect.height) * 100;
 
-      console.log(`xPercent: ${xPercent.toFixed(1)}, yPercent: ${yPercent.toFixed(1)}, width: ${widthPercent.toFixed(1)}, height: ${heightPercent.toFixed(1)}`);
+      // Форматированный JSON для вставки в сценарий
+      const jsonStr = `{
+        "xPercent": ${xPercent.toFixed(1)},
+        "yPercent": ${yPercent.toFixed(1)},
+        "width": ${widthPercent.toFixed(1)},
+        "height": ${heightPercent.toFixed(1)},
+        "tooltipPosition": "top",
+        "tooltipAlign": "center",
+        "tooltipTitle": "",
+        "tooltipText": ""
+        }`;
+      console.log(jsonStr);
 
       overlay.style.display = 'none';
       document.removeEventListener('mousemove', onMouseMove);

@@ -1,16 +1,16 @@
+
+/* ====== Base & Layout ====== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
 html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
   background-color: #DDE2E8;
 }
-
 .background-container {
   position: relative;
   width: 100vw;
@@ -20,38 +20,19 @@ html, body {
   align-items: center;
   overflow: hidden;
 }
-
 .image-wrapper {
-  position: relative; 
+  position: relative;
   width: max-content;
   height: max-content;
 }
-
-
-
 #step-img {
   max-width: 100vw;
   max-height: 100vh;
   object-fit: contain;
   z-index: 1;
-  transition: transform 0.5s cubic-bezier(.4,0,.2,1), opacity 0.4s cubic-bezier(.4,0,.2,1);
-  will-change: transform, opacity;
 }
 
-#step-img.slide-up {
-  transform: translateY(-60px);
-  opacity: 0;
-}
-#step-img.slide-down {
-  transform: translateY(60px);
-  opacity: 0;
-}
-#step-img.slide-in {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-
+/* ====== Hotspot Styles ====== */
 .hotspot-container {
   position: absolute;
   top: 0;
@@ -59,61 +40,58 @@ html, body {
   width: 100%;
   height: 100%;
   z-index: 3;
-}
-
-.hotspot {
-    position: absolute;
-    box-sizing: border-box;
-    pointer-events: none;
-    border-radius: 4px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #0989e3;
-    box-shadow: 0px 0px 8px 0px rgba(9, 137, 227, 1);
-    background: transparent;
-}
-.hotspot-container {
   pointer-events: none;
 }
+.hotspot {
+  position: absolute;
+  box-sizing: border-box;
+  pointer-events: none;
+  border-radius: 4px;
+  border: 1px solid #0989e3;
+  box-shadow: 0 0 8px 0 rgba(9,137,227,1);
+  background: transparent;
+  overflow: visible !important;
+}
 
-
-
-
+/* ====== Tooltip Styles ====== */
 .tooltip {
+  overflow: visible !important;
   background: #F35959;
-  color: white;
+  color: #fff;
   padding: 16px;
   border-radius: 4px;
   max-width: 350px;
   position: absolute;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   z-index: 3;
-  width: 22.0vw;
+  width: 22vw;
   box-sizing: border-box;
   font-family: 'Ubuntu', Arial, sans-serif;
   font-weight: 500;
   font-size: 15px;
   text-align: left;
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+  pointer-events: auto;
 }
-
+.tooltip.tooltip-show {
+  opacity: 1;
+  transform: scale(1);
+}
 .tooltip-title {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 15px;
   color: #fff;
 }
-
 .tooltip-arrow {
   position: absolute;
   width: 0;
   height: 0;
 }
-
-
 .tooltip-inner {
   padding: 0;
 }
-
 .tooltip-actions {
   margin-top: 12px;
   display: flex;
@@ -124,12 +102,10 @@ html, body {
 .tooltip-actions .next {
   display: flex;
   flex-direction: row;
-  gap: 0;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   height: 32px;
-  position: relative;
   font-family: 'Ubuntu', Arial, sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -138,39 +114,24 @@ html, body {
   box-shadow: none;
   transition: background 0.2s;
   outline: none;
-}
-
-.tooltip-actions .prev {
-  background: transparent;
-  color: #fff;
   border: none;
   padding: 0;
 }
-
-
+.tooltip-actions .prev {
+  background: transparent;
+  color: #fff;
+}
 .tooltip-actions .next {
   background: #fff;
   border-radius: 3px;
   padding: 4px 12px;
   color: #0074c6;
-  border: none;
 }
-
 .tooltip-actions .next:hover {
   background: #f0f4f8;
 }
 
-@media (max-width: 600px) {
-  .tooltip-actions .prev,
-  .tooltip-actions .next {
-    font-size: 12px;
-    height: 28px;
-  }
-  .tooltip-actions .next {
-    padding: 3px 8px;
-  }
-}   
-
+/* ====== Tooltip Arrows ====== */
 .tooltip-arrow-bottom-center {
   left: 50%;
   transform: translateX(-50%);
@@ -259,5 +220,35 @@ html, body {
   border-bottom: 12px solid transparent;
   border-right: 12px solid #F35959;
 }
+
+/* ====== Animation States ====== */
+.tooltip-animating {
+  transition: left 0.35s cubic-bezier(.4,0,.2,1), top 0.35s cubic-bezier(.4,0,.2,1), opacity 0.2s;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.tooltip-hide-arrow .tooltip-arrow {
+  display: none !important;
+}
+.hotspot-animating {
+  transition: left 0.35s cubic-bezier(.4,0,.2,1), top 0.35s cubic-bezier(.4,0,.2,1), width 0.35s, height 0.35s;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 600px) {
+  .tooltip-actions .prev,
+  .tooltip-actions .next {
+    font-size: 12px;
+    height: 28px;
+  }
+  .tooltip-actions .next {
+    padding: 3px 8px;
+  }
+}
+}
+
+
 
 
