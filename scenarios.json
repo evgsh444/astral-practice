@@ -1,0 +1,32 @@
+[
+  {
+    "id": "addorganization",
+    "name": "Добавление организации",
+    "steps": [
+      {
+        "step": 1,
+        "image": "assets/scenario1imgs/addorganizationimg.svg",
+        "hotspots": [
+          {
+            "coords": [80, 4, 95, 7]
+          }
+        ],
+        "buttons": {
+          "next": true,
+          "back": false
+        }
+      },
+
+      {
+        "step": 2,
+        "image": "assets/scenario1imgs/allorganizationsimg.svg",
+        "hotspots": [ {} ],
+        "buttons": {
+          "next": true,
+          "back": true
+        }
+      }
+    ]
+  }
+]
+
