@@ -110,7 +110,7 @@ function displayCurrentStep() {
   stepImg.src = stepData.image;
   stepImg.onload = () => {
     stepImg.ondragstart = () => false;
-    if (window.enableHotspotEditor) window.enableHotspotEditor();
+    if (window.enableHotspotEditor && hotspotEditorEnabled) window.enableHotspotEditor();
     hotspotContainer.innerHTML = "";
     if (stepData.hotspots && stepData.hotspots.length > 0) {
       addHotspot(stepData.hotspots[currentHotspotIndex]);
