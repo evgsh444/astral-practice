@@ -48,6 +48,7 @@ html, body {
   border-radius: 4px;
   border: 1px solid #0989e3;
   box-shadow: 0 0 8px 0 rgba(9,137,227,1);
+  animation: hotspotColorPulseBlue 2s infinite;
   background: transparent;
   overflow: visible !important;
 }
@@ -235,6 +236,30 @@ html, body {
   transition: left 0.35s cubic-bezier(.4,0,.2,1), top 0.35s cubic-bezier(.4,0,.2,1), width 0.35s, height 0.35s;
   opacity: 0.7;
   pointer-events: none;
+}
+
+@keyframes hotspotColorPulseBlue { 
+  0% { 
+    box-shadow: 0 0 8px 0 rgba(9,137,227,1); 
+  } 
+  50% { 
+    box-shadow: 0 0 16px 2px rgba(9,137,227,0.5); 
+  } 
+  100% { 
+    box-shadow: 0 0 8px 0 rgba(9,137,227,1); 
+  } 
+}
+
+@keyframes hotspotColorPulseWhite {
+  0% {
+    box-shadow: 0 0 8px 0 rgba(255, 255, 255, 1);
+  }
+  50% {
+    box-shadow: 0 0 16px 2px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 8px 0 rgba(255, 255, 255, 1); 
+  }
 }
 
 /* ====== Responsive ====== */
