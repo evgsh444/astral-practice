@@ -86,7 +86,7 @@
             "yPercent": 17.8,
             "width": 27.1,
             "height": 10.2,
-            "tooltipPosition": "top",
+            "tooltipPosition": "bottom",
             "tooltipAlign": "center",
             "tooltipTitle": "",
             "tooltipText": "При выборе варианта “По сертификату” отобразится список установленных в системе электронных подписей"
