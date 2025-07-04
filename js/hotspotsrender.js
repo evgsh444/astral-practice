@@ -8,6 +8,13 @@ function addHotspot(hs) {
     hotspotDiv.style.width = hs.width + "%";
     hotspotDiv.style.height = hs.height + "%";
 
+    if(hs.yPercent < 7)
+    {
+        hotspotDiv.style.border = '1px solid #ffffff';
+        hotspotDiv.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+        hotspotDiv.style.animation = "hotspotColorPulseWhite 2s infinite"; 
+    }
+
     // Для анимации перемещения хотспота
     hotspotDiv.animateTo = function(newHs, cb) {
         hotspotDiv.classList.add('hotspot-animating');
