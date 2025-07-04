@@ -95,6 +95,48 @@
       },
       {
         "step": 6,
+        "image": "assets/scenario1imgs/certificateaddimg.svg",
+        "hotspots":[
+          {
+            "xPercent": 32.6,
+            "yPercent": 31.9,
+            "width": 40.0,
+            "height": 56.1,
+            "tooltipPosition": "left",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "Выберите необходимую электронную подпись установленную в системе"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "image": "assets/scenario1imgs/detailsimg.svg",
+        "hotspots": [
+          {
+            "xPercent": 6.6,
+            "yPercent": 18.1,
+            "width": 65.3,
+            "height": 63.6,
+            "tooltipPosition": "right",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "Когда организация будет найдена, автоматически будут загружены реквизиты организации. Заполните вручную недостающие данные."
+          },
+          {
+            "xPercent": 72.2,
+            "yPercent": 18.7,
+            "width": 25.6,
+            "height": 10.1,
+            "tooltipPosition": "left",
+            "tooltipAlign": "center",
+            "tooltipTitle": "",
+            "tooltipText": "После нажатия кнопки “Подключить организацию” откроется форма заявления на подключение"
+          }
+        ]
+      },
+      {
+        "step": 8,
         "image": "assets/scenario1imgs/connectastralimg.svg",
         "hotspots": [
           {
@@ -118,10 +160,10 @@
             "tooltipText": "Если вы хотите изменить данные организации, или сменить сертификат, нажмите “Изменить”.Если сертификат не был добавлен ранее, нажмите кнопку “Выбрать сертификат”."
           },
           {
-            "xPercent": 21.2,
-            "yPercent": 31.8,
-            "width": 61.9,
-            "height": 6.6,
+            "xPercent": 20.8,
+            "yPercent": 30.6,
+            "width": 62.8,
+            "height": 9.6,
             "tooltipPosition": "bottom",
             "tooltipAlign": "center",
             "tooltipTitle": "",
@@ -150,7 +192,7 @@
        ]
       },
       {
-        "step": 7,
+        "step": 9,
         "image": "assets/scenario1imgs/connecttoastral2img.svg",
         "hotspots": [
           {
@@ -184,10 +226,10 @@
             "tooltipText": "Добавить дополнительные коды контролирующих органов (КПП, ОКПО, Рег. номер ПФР, ФСС и т.д.) в выбранное направление"
           },
           {
-            "xPercent": 40.5,
-            "yPercent": 91.4,
-            "width": 3.5,
-            "height": 4.5,
+            "xPercent": 40.7,
+            "yPercent": 91.1,
+            "width": 2.6,
+            "height": 4.0,
             "tooltipPosition": "top",
             "tooltipAlign": "center",
             "tooltipTitle": "",
@@ -206,7 +248,7 @@
         ]
       },
       {
-        "step": 8,
+        "step": 10,
         "image": "assets/scenario1imgs/connectastralimg.svg",
         "hotspots": [
           {

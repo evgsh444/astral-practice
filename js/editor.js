@@ -1,4 +1,4 @@
-let hotspotEditorEnabled = false; 
+let hotspotEditorEnabled = true; 
 
 function enableHotspotEditor() {
   const stepImg = document.getElementById('step-img');
